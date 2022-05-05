@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="EEChat:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>EEChat</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="EEChat-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="EEChat:war exploded" />
+    </root>
+  </artifact>
+</component>
