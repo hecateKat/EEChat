@@ -17,7 +17,7 @@ public class FileDto {
 
     private String username;
 
-    private String filename;
+    private String name;
 
     private String text;
 

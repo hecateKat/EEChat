@@ -10,17 +10,17 @@ import java.util.UUID;
 @Getter
 @Setter
 @Builder
-public class File {
+public class FileModel {
 
     private UUID id;
 
     private String username;
 
-    private String fileName;
+    private String name;
 
-    private String location;
+    private String placement;
 
-    private byte[] content;
+    private byte[] text;
 
     private Timestamp time;
 }

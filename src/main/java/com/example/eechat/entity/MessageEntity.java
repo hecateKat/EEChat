@@ -4,7 +4,6 @@ import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.List;
 import java.util.UUID;
@@ -15,8 +14,9 @@ import java.util.UUID;
 @EqualsAndHashCode
 @ToString
 @Entity
+@Builder
 @Table(name = "MessageEntity")
-public class MessageEntity implements Serializable {
+public class MessageEntity{
 
     @Id
     @GeneratedValue
