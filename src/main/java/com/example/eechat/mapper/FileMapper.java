@@ -1,7 +1,7 @@
 package com.example.eechat.mapper;
 
 import com.example.eechat.dto.FileDto;
-import com.example.eechat.entity.FileModel;
+import com.example.eechat.entity.FileEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Named;
@@ -12,12 +12,12 @@ import java.util.Base64;
 public class FileMapper {
 
     @Mapping(source = "content", target = "content", qualifiedByName = "contentToString")
-    public static FileDto toDto(FileModel file){
+    public static FileDto toDto(FileEntity file){
         return FileDto.builder()
                 .id(file.getId())
                 .username(file.getUsername())
-                .filename(file.getFilename())
-                .text(file.getText())
+                .filename(file.getName())
+                .text(file.getPlacement())
                 .time(file.getTime())
                 .build();
     }
@@ -28,8 +28,8 @@ public class FileMapper {
     }
 
     @Mapping(source = "content", target = "content", qualifiedByName = "contentToBytes")
-    public static FileModel ToModel(FileDto file){
-        return FileModel.builder()
+    public static FileEntity ToModel(FileDto file){
+        return FileEntity.builder()
                 .id(file.getId())
                 .username(file.getUsername())
                 .filename(file.getFilename())

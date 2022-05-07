@@ -30,6 +30,13 @@ public class ChannelEntity {
     @JoinTable(name = "users", joinColumns = @JoinColumn(name = "channel_ID"), inverseJoinColumns = @JoinColumn(name = "user_ID"))
     private List<UserEntity> users = new ArrayList<>();
 
-    private List<FileModel> fileList = new ArrayList<>();
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "channel_message", joinColumns = @JoinColumn(name = "channel_ID"),
+            inverseJoinColumns = @JoinColumn(name = "message_id")
+    )
+    private List<MessageEntity> messages = new ArrayList<>();
+
+    @OneToMany
+    private List<FileEntity> fileList = new ArrayList<>();
 
 }

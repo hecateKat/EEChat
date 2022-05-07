@@ -19,24 +19,24 @@ import java.util.UUID;
 @EqualsAndHashCode
 @Table(name = "FileEntity")
 @Entity
-public class FileModel {
+public class FileEntity {
 
     @Id
     @Column(name = "file_ID")
     @NotNull
     private UUID id;
 
-    @Column(name = "filename")
+    @Column(name = "name")
     @NotNull
-    private String filename;
+    private String name;
 
     @Column(name = "username")
     @NotNull
     private String username;
 
-    @Column(name = "text")
+    @Column(name = "placement")
     @NotNull
-    private String text;
+    private String placement;
 
     @Column(name = "time")
     @NotNull
