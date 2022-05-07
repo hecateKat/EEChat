@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 
 @AllArgsConstructor(onConstructor_ = @Inject)
 @Transactional
-public class MultiplyChannelsAdaptor {
+public class MultipleChannelsAdaptor {
 
     private final MultipleChannelsRepository multipleChannelsRepository;
 

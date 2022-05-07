@@ -12,6 +12,7 @@ import java.util.UUID;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
 public class MessageModel implements Serializable {
 
     private UUID id;

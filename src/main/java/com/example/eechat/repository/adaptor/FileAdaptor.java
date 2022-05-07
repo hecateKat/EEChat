@@ -18,7 +18,7 @@ public class FileAdaptor {
 
     private FileEntityRepository fileEntityRepository;
 
-    Optional<FileModel> findByName(String name){
+    public Optional<FileModel> findByName(String name){
         return fileEntityRepository.findByName(name).map(FileEntityMapper::toModel);
     }
 

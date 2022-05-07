@@ -19,7 +19,11 @@ public class UserAdaptor {
         userEntityRepository.saveEntity(UserEntityMapper.toEntity(userModel));
     }
 
-    Optional<UserModel> findByName(String name){
+    public Optional<UserModel> findByName(String name){
         return userEntityRepository.findByName(name).map(UserEntityMapper::toModel);
+    }
+
+    public void delete(String name){
+        userEntityRepository.deleteEntity(name);
     }
 }
