@@ -2,18 +2,35 @@ package com.example.eechat.entity;
 
 import lombok.*;
 
-import javax.persistence.Id;
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import java.sql.Timestamp;
+import java.util.List;
+import java.util.UUID;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
+@Builder
+@EqualsAndHashCode
+@Table(name = "UserEntity")
+@Entity
 public class UserEntity {
 
     @Id
-    private Long id;
+    @Column(name = "user_ID")
+    @NotNull
+    private UUID id;
 
-    private String userName;
+    @Column(name = "username", unique = true)
+    @NotNull
+    private String username;
 
+    @NotNull
+    private Timestamp date;
+
+    @ManyToMany(mappedBy = "users")
+    private List<ChannelEntity> channelEntities;
 }

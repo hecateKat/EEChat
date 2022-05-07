@@ -8,7 +8,9 @@ import lombok.*;
 @NoArgsConstructor
 @ToString
 @Builder
-public class UserDto {
+public class ChannelUserDto {
 
     private String username;
+
+    private String channelName;
 }

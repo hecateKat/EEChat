@@ -3,6 +3,7 @@ package com.example.eechat.dto;
 import lombok.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @Builder
 @Setter
@@ -11,11 +12,9 @@ import java.util.List;
 @AllArgsConstructor
 public class ChannelDto {
 
+    private UUID id;
+
     private String name;
 
-    private boolean isPrivate;
-
-    private List<String> channelMessages;
-
-    private List<String> userNames;
+    private List<UserDto> users;
 }

@@ -2,11 +2,11 @@ package com.example.eechat.entity;
 
 import lombok.*;
 
-import javax.persistence.ElementCollection;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.NamedQuery;
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @Getter
 @Setter
@@ -14,20 +14,22 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity(name = "ChannelEntity")
-@EqualsAndHashCode(of = "name")
-@NamedQuery(name = ChannelEntity.FIND, query = "SELECT v FROM ChannelEntity v WHERE v.name = :name")
+@EqualsAndHashCode
 public class ChannelEntity {
 
-    public static final String FIND = "findOne";
-
     @Id
+    @GeneratedValue
+    @Column(name = "channel_ID")
+    @NotNull
+    private UUID id;
+
+    @Column(name = "channel_NAME")
     private String name;
 
-    private boolean isPrivate;
+    @ManyToMany
+    @JoinTable(name = "users", joinColumns = @JoinColumn(name = "channel_ID"), inverseJoinColumns = @JoinColumn(name = "user_ID"))
+    private List<UserEntity> users = new ArrayList<>();
 
-    @ElementCollection
-    private List<String> channelMessages;
+    private List<FileModel> fileList = new ArrayList<>();
 
-    @ElementCollection
-    private List<String> userNames;
 }
