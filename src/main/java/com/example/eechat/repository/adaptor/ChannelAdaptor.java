@@ -1,6 +1,5 @@
 package com.example.eechat.repository.adaptor;
 
-import com.example.eechat.mapper.ChannelEntityMapper;
 import com.example.eechat.mapper.UserEntityMapper;
 import com.example.eechat.model.ChannelModel;
 import com.example.eechat.model.UserModel;
@@ -12,6 +11,8 @@ import javax.transaction.Transactional;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static com.example.eechat.mapper.ChannelEntityMapper.toEntity;
+
 @AllArgsConstructor(onConstructor_ = @Inject)
 @Transactional
 public class ChannelAdaptor {
@@ -22,14 +23,12 @@ public class ChannelAdaptor {
         channelEntityRepository
                 .connectUserToChannel(UserEntityMapper
                         .toEntity(userModel),
-                        ChannelEntityMapper.
-                                toEntity(channelModel));
+                        toEntity(channelModel));
     }
 
     public List<UserModel> findAllUsers(ChannelModel channelModel){
         return channelEntityRepository
-                .findAllUsersAttached(ChannelEntityMapper
-                        .toEntity(channelModel))
+                .findAllUsersAttached(toEntity(channelModel))
                 .stream()
                 .map(UserEntityMapper::toModel)
                 .collect(Collectors.toList());
@@ -39,7 +38,6 @@ public class ChannelAdaptor {
         channelEntityRepository
                 .deleteUserFromChannel(UserEntityMapper
                         .toEntity(userModel),
-                        ChannelEntityMapper
-                                .toEntity(channelModel));
+                        toEntity(channelModel));
     }
 }

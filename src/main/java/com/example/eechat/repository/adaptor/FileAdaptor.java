@@ -11,6 +11,8 @@ import javax.inject.Inject;
 import javax.transaction.Transactional;
 import java.util.Optional;
 
+import static com.example.eechat.mapper.ChannelEntityMapper.*;
+
 
 @AllArgsConstructor(onConstructor_ = @Inject)
 @Transactional
@@ -23,7 +25,7 @@ public class FileAdaptor {
     }
 
     public void send(FileModel fileModel, ChannelModel channelModel){
-        fileEntityRepository.send(FileEntityMapper.toEntity(fileModel), fileModel.getText(), ChannelEntityMapper.toEntity(channelModel));
+        fileEntityRepository.send(FileEntityMapper.toEntity(fileModel), fileModel.getText(), toEntity(channelModel));
     }
 
     public byte[] getText(String placement){

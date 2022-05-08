@@ -11,6 +11,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import static com.example.eechat.mapper.ChannelEntityMapper.*;
+
 @AllArgsConstructor(onConstructor_ = @Inject)
 @Transactional
 public class MultipleChannelsAdaptor {
@@ -19,8 +21,7 @@ public class MultipleChannelsAdaptor {
 
     public void create(ChannelModel channelModel){
         multipleChannelsRepository
-                .create(ChannelEntityMapper
-                        .toEntity(channelModel));
+                .create(toEntity(channelModel));
     }
 
     public List<ChannelModel> findAll(){
