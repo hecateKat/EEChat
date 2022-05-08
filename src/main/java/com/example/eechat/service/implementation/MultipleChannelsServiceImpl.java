@@ -6,7 +6,6 @@ import com.example.eechat.service.MultipleChannelsService;
 import lombok.SneakyThrows;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 import java.util.UUID;
 

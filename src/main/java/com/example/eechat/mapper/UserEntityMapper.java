@@ -1,6 +1,5 @@
 package com.example.eechat.mapper;
 
-import com.example.eechat.dto.UserDto;
 import com.example.eechat.entity.UserEntity;
 import com.example.eechat.model.UserModel;
 

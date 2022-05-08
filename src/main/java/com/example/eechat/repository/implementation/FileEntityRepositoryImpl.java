@@ -6,7 +6,6 @@ import com.example.eechat.repository.FileEntityRepository;
 import com.example.eechat.utils.Constants;
 import lombok.Setter;
 import lombok.SneakyThrows;
-import lombok.var;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;

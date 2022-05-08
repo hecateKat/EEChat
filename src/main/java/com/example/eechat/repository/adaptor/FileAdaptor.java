@@ -1,6 +1,5 @@
 package com.example.eechat.repository.adaptor;
 
-import com.example.eechat.mapper.ChannelEntityMapper;
 import com.example.eechat.mapper.FileEntityMapper;
 import com.example.eechat.model.ChannelModel;
 import com.example.eechat.model.FileModel;
@@ -11,7 +10,7 @@ import javax.inject.Inject;
 import javax.transaction.Transactional;
 import java.util.Optional;
 
-import static com.example.eechat.mapper.ChannelEntityMapper.*;
+import static com.example.eechat.mapper.ChannelEntityMapper.toEntity;
 
 
 @AllArgsConstructor(onConstructor_ = @Inject)
