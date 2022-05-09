@@ -6,23 +6,22 @@ import com.example.eechat.repository.adaptor.MessageAdaptor;
 import com.example.eechat.repository.adaptor.MultipleChannelsAdaptor;
 import com.example.eechat.service.MessageService;
 import com.example.eechat.utils.Constants;
+import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import org.apache.activemq.ActiveMQConnectionFactory;
 
+import javax.inject.Inject;
 import javax.jms.ConnectionFactory;
 import javax.jms.MessageProducer;
 import javax.jms.Session;
 
+@RequiredArgsConstructor(onConstructor_ = @Inject)
 public class MessageServiceImpl implements MessageService {
 
     private MessageAdaptor messageAdaptor;
 
     private MultipleChannelsAdaptor channelsAdaptor;
 
-    public MessageServiceImpl(MessageAdaptor messageAdaptor, MultipleChannelsAdaptor channelsAdaptor) {
-        this.messageAdaptor = messageAdaptor;
-        this.channelsAdaptor = channelsAdaptor;
-    }
 
     @Override
     public void send(MessageModel messageModel, String name) {

@@ -7,10 +7,13 @@ import com.example.eechat.repository.adaptor.ChannelAdaptor;
 import com.example.eechat.repository.adaptor.MultipleChannelsAdaptor;
 import com.example.eechat.repository.adaptor.UserAdaptor;
 import com.example.eechat.service.ChannelService;
+import lombok.RequiredArgsConstructor;
 
+import javax.inject.Inject;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@RequiredArgsConstructor(onConstructor_ = @Inject)
 public class ChannelServiceImpl implements ChannelService {
 
     private final ChannelAdaptor channelAdaptor;
@@ -18,12 +21,6 @@ public class ChannelServiceImpl implements ChannelService {
     private final MultipleChannelsAdaptor multipleChannelsAdaptor;
 
     private final UserAdaptor userAdaptor;
-
-    public ChannelServiceImpl(ChannelAdaptor channelAdaptor, MultipleChannelsAdaptor multipleChannelsAdaptor, UserAdaptor userAdaptor) {
-        this.channelAdaptor = channelAdaptor;
-        this.multipleChannelsAdaptor = multipleChannelsAdaptor;
-        this.userAdaptor = userAdaptor;
-    }
 
     @Override
     public void addUserToChat(String username, String channel) {

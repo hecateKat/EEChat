@@ -5,31 +5,24 @@ import com.example.eechat.mapper.ChannelDtoMapper;
 import com.example.eechat.service.MultipleChannelsService;
 import lombok.RequiredArgsConstructor;
 
-import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
-import javax.inject.Named;
-import javax.servlet.annotation.WebServlet;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-
 import java.util.List;
 import java.util.stream.Collectors;
 
 import static javax.ws.rs.core.Response.*;
 
-@WebServlet(urlPatterns = "/channels")
-@RequestScoped
-@Named
+@Path("/channels")
+@ApplicationScoped
 @RequiredArgsConstructor(onConstructor_ = @Inject)
 public class MultipleChannelsController {
 
     @Inject
     private MultipleChannelsService service;
 
-    public MultipleChannelsController(MultipleChannelsService service) {
-        this.service = service;
-    }
 
     @GET
     @Path("/all")

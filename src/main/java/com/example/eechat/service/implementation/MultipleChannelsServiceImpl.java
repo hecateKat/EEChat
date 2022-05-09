@@ -3,19 +3,19 @@ package com.example.eechat.service.implementation;
 import com.example.eechat.model.ChannelModel;
 import com.example.eechat.repository.adaptor.MultipleChannelsAdaptor;
 import com.example.eechat.service.MultipleChannelsService;
+import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 
+import javax.inject.Inject;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+@RequiredArgsConstructor(onConstructor_ = @Inject)
 public class MultipleChannelsServiceImpl implements MultipleChannelsService {
 
     private final MultipleChannelsAdaptor multipleChannelsAdaptor;
 
-    public MultipleChannelsServiceImpl(MultipleChannelsAdaptor multipleChannelsAdaptor) {
-        this.multipleChannelsAdaptor = multipleChannelsAdaptor;
-    }
 
     @Override
     @SneakyThrows

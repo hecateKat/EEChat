@@ -6,10 +6,8 @@ import com.example.eechat.model.MessageModel;
 import com.example.eechat.service.ChannelService;
 import lombok.RequiredArgsConstructor;
 
-import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
-import javax.inject.Named;
-import javax.servlet.annotation.WebServlet;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -17,21 +15,16 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import static com.example.eechat.mapper.MessageDtoMapper.toDto;
-import static javax.ws.rs.core.Response.*;
+import static javax.ws.rs.core.Response.noContent;
+import static javax.ws.rs.core.Response.ok;
 
+@Path("/channel")
+@ApplicationScoped
 @RequiredArgsConstructor(onConstructor_ = @Inject)
-@WebServlet(urlPatterns ="/channel")
-@RequestScoped
-@Named
 public class ChannelController {
 
     @Inject
     private ChannelService service;
-
-
-    public ChannelController(ChannelService service) {
-        this.service = service;
-    }
 
     @POST
     @Path("/new_user")

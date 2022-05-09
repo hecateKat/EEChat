@@ -8,9 +8,11 @@ import com.example.eechat.repository.adaptor.FileAdaptor;
 import com.example.eechat.repository.adaptor.MultipleChannelsAdaptor;
 import com.example.eechat.service.FileService;
 import com.example.eechat.utils.Constants;
+import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import org.apache.activemq.ActiveMQConnectionFactory;
 
+import javax.inject.Inject;
 import javax.jms.ConnectionFactory;
 import javax.jms.MessageProducer;
 import javax.jms.Session;
@@ -19,16 +21,13 @@ import java.time.Instant;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
+@RequiredArgsConstructor(onConstructor_ = @Inject)
 public class FileServiceImpl implements FileService {
 
     private final FileAdaptor fileAdaptor;
 
     private final MultipleChannelsAdaptor channelsAdaptor;
 
-    public FileServiceImpl(FileAdaptor fileAdaptor, MultipleChannelsAdaptor channelsAdaptor) {
-        this.fileAdaptor = fileAdaptor;
-        this.channelsAdaptor = channelsAdaptor;
-    }
 
     @Override
     public FileModel findByName(String name, String username, String channel) {

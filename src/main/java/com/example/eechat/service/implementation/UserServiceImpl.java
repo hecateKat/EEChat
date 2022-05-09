@@ -3,19 +3,19 @@ package com.example.eechat.service.implementation;
 import com.example.eechat.model.UserModel;
 import com.example.eechat.repository.adaptor.UserAdaptor;
 import com.example.eechat.service.UserService;
+import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
+
+import javax.inject.Inject;
 import java.sql.Timestamp;
 
 import java.time.Instant;
 import java.util.UUID;
 
+@RequiredArgsConstructor(onConstructor_ = @Inject)
 public class UserServiceImpl implements UserService {
 
     private final UserAdaptor userAdaptor;
-
-    public UserServiceImpl(UserAdaptor userAdaptor) {
-        this.userAdaptor = userAdaptor;
-    }
 
     @Override
     @SneakyThrows

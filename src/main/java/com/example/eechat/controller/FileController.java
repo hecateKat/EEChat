@@ -5,10 +5,8 @@ import com.example.eechat.model.FileModel;
 import com.example.eechat.service.FileService;
 import lombok.RequiredArgsConstructor;
 
-import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
-import javax.inject.Named;
-import javax.servlet.annotation.WebServlet;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -17,18 +15,13 @@ import static com.example.eechat.mapper.FileDtoMapper.toDto;
 import static com.example.eechat.mapper.FileDtoMapper.toModel;
 import static javax.ws.rs.core.Response.ok;
 
-@WebServlet(urlPatterns ="/files")
-@RequestScoped
-@Named
+@Path("/files")
+@ApplicationScoped
 @RequiredArgsConstructor(onConstructor_ = @Inject)
 public class FileController {
 
     @Inject
     private FileService fileService;
-
-    public FileController(FileService fileService) {
-        this.fileService = fileService;
-    }
 
     @POST
     @Path("/send")

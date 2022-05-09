@@ -4,28 +4,22 @@ import com.example.eechat.dto.UserDto;
 import com.example.eechat.service.UserService;
 import lombok.RequiredArgsConstructor;
 
-import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
-import javax.inject.Named;
-import javax.servlet.annotation.WebServlet;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import static javax.ws.rs.core.Response.*;
 
-@WebServlet(urlPatterns ="users")
-@RequestScoped
-@Named
+@Path("users")
+@ApplicationScoped
 @RequiredArgsConstructor(onConstructor_ = @Inject)
 public class UserController {
 
     @Inject
     private UserService userService;
 
-    public UserController(UserService userService) {
-        this.userService = userService;
-    }
 
     @POST
     @Path("add_user")
