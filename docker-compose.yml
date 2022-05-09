@@ -16,14 +16,13 @@ services:
 
   app:
     build:
-      context: ../../Desktop/dockery
-      dockerfile: ../../Desktop/dockery/Dockerfile
+      context: .
+      dockerfile: Dockerfile
     restart: always
     ports:
-      - "80:80" #TODO: do zmiany na port jaki apka wystawia
-    environment:
-      - DEBUG=false
-      - DB_URL=postgresql://postgres:postgres@db:5432/postgres
+      - "8080:8080"
+      - "9990:9990"
+
 
 
 

@@ -1,23 +1,20 @@
 FROM maven:3.8-openjdk-17 as builder
 
-RUN mkdir /app
+RUN mkdir /app && mkdir /output
 WORKDIR /app
 
-COPY ../../Desktop/dockery .
+COPY pom.xml .
+RUN mvn -e -B dependency:resolve
+COPY . .
+RUN mvn clean -e -B package
 
-RUN mvn clear packaga #czy tam inna komenda do builda
+ARG JAR_FILE=/app/target/*.war
+RUN mv ${JAR_FILE} /output/app.war
 
-#teraz musimy wiedzieć gdzie jest nas plik jar
-RUN JAR_NAME=<tutaj podaj ścieżkę gdzie jest "target"> \
-	&& mkdir /output \
-	&& mv $JAR_PATH /output/app.jar
+FROM quay.io/wildfly/wildfly
 
-FROM  openjdk:17-alpine
+RUN /opt/jboss/wildfly/bin/add-user.sh admin admin
 
-RUN mkdir /app
-WORKDIR /app
+COPY --from=builder /output/app.war /opt/jboss/wildfly/standalone/deployments/app.war
 
-COPY --from=builder /output/app.jar /app/app.jar
-
-#TODO:: to jest komensat która startowała apkę zrobioną z grejdlem, czy dla mejwena będzie inna to nei wiem
-ENTRYPOINT /bin/sh -c 'umask 0002 && java -Djava.security.egd=file:/dev/./urandom -XX:+UseG1GC ${DEBUG_ARGS} -jar app.jar'
+CMD ["/opt/jboss/wildfly/bin/standalone.sh", "-b", "0.0.0.0", "-bmanagement", "0.0.0.0"]
