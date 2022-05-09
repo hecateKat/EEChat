@@ -19,8 +19,8 @@
         <module name="EEChat" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="EEChat" target="1.8" />
+    <bytecodeTargetLevel target="17">
+      <module name="EEChat" target="17" />
     </bytecodeTargetLevel>
   </component>
 </project>

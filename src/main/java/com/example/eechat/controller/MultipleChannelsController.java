@@ -3,8 +3,12 @@ package com.example.eechat.controller;
 import com.example.eechat.dto.ChannelDto;
 import com.example.eechat.mapper.ChannelDtoMapper;
 import com.example.eechat.service.MultipleChannelsService;
+import lombok.RequiredArgsConstructor;
 
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
+import javax.inject.Named;
+import javax.servlet.annotation.WebServlet;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -14,12 +18,15 @@ import java.util.stream.Collectors;
 
 import static javax.ws.rs.core.Response.*;
 
-@Path("/channels")
+@WebServlet(urlPatterns = "/channels")
+@RequestScoped
+@Named
+@RequiredArgsConstructor(onConstructor_ = @Inject)
 public class MultipleChannelsController {
 
+    @Inject
     private MultipleChannelsService service;
 
-    @Inject
     public MultipleChannelsController(MultipleChannelsService service) {
         this.service = service;
     }

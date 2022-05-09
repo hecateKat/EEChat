@@ -11,11 +11,10 @@ import java.util.UUID;
 
 @Getter
 @Setter
-@SuperBuilder
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity(name = "ChannelEntity")
-@EqualsAndHashCode
 public class ChannelEntity {
 
     @Id
