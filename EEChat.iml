@@ -74,8 +74,6 @@
     <orderEntry type="library" name="Maven: org.springframework:spring-asm:3.0.7.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: commons-net:commons-net:3.1" level="project" />
     <orderEntry type="library" name="Maven: org.jasypt:jasypt:1.9.0" level="project" />
-    <orderEntry type="library" name="Maven: org.mapstruct:mapstruct:${mapstruct.version}" level="project" />
-    <orderEntry type="library" name="Maven: org.mapstruct:mapstruct-processor:${mapstruct.version}" level="project" />
     <orderEntry type="library" name="Maven: org.jboss.resteasy:resteasy-jaxb-provider:4.7.3.Final" level="project" />
     <orderEntry type="library" name="Maven: org.jboss.spec.javax.xml.bind:jboss-jaxb-api_2.3_spec:2.0.0.Final" level="project" />
     <orderEntry type="library" name="Maven: org.glassfish.jaxb:jaxb-runtime:2.3.3-b02" level="project" />

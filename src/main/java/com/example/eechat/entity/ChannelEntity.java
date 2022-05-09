@@ -1,6 +1,7 @@
 package com.example.eechat.entity;
 
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -10,7 +11,7 @@ import java.util.UUID;
 
 @Getter
 @Setter
-@Builder
+@SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity(name = "ChannelEntity")

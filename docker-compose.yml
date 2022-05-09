@@ -1,0 +1,32 @@
+version: '3'
+
+
+services:
+  db:
+    image: postgres:14.1-alpine
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=postgres
+    ports:
+      - '5432:5432'
+    volumes:
+      - db:/var/lib/postgresql/data
+
+  app:
+    build:
+      context: ../../Desktop/dockery
+      dockerfile: ../../Desktop/dockery/Dockerfile
+    restart: always
+    ports:
+      - "80:80" #TODO: do zmiany na port jaki apka wystawia
+    environment:
+      - DEBUG=false
+      - DB_URL=postgresql://postgres:postgres@db:5432/postgres
+
+
+
+volumes:
+  db:
+    driver: local
